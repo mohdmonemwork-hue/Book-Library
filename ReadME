@@ -1,0 +1,67 @@
+# Project Name
+
+### Book Library
+
+---
+
+## Overview
+
+### Online book library to keep track of the Books you have and can join Groups with friends and family where you can see the books they have and borrow them
+
+---
+
+## Screenshots
+
+---
+
+## Technologies Used
+
+### -Full MERN , HTML, javascript, Css
+
+---
+
+## Getting Started
+
+1. Create .env and add
+   MONGODB_URI=Your mongoose library,
+   SESSION_SECRET= Random Session Secret,
+   PORT=3000
+2. npm init
+3. npm i
+
+---
+
+## User Stories
+
+1. As a user, I want to be able to sign-up
+2. As a user, I want to be able to sign-init
+3. As a user, I want to be able to add my books with all my information
+4. As a user, I want to be able to join a group with my friends and family
+5. As a user, I want to be able to borrow my group member books
+6. As a user, I want to be able to edit my books
+7. As a user, I want to be able to Review my books or friends books
+
+---
+
+## Database Design
+
+![Project ERD](Project2ERD.png)
+
+---
+
+## Routes
+
+| Method | Route | Description |
+| ------ | ----- | ----------- |
+
+---
+
+## Features
+
+---
+
+## Future Enhancements
+
+---
+
+## Credits
