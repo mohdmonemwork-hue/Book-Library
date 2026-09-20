@@ -5,7 +5,7 @@ const isSignedIn = require("../middleware/is-signed-in.js");
 const upload = require("../middleware/multer.js");
 
 router.get("/new", isSignedIn, (req, res) => {
-  res.render("books/new.ejs");
+  res.render("new.ejs");
 });
 
 router.post("/", isSignedIn, upload.single("image"), async (req, res) => {
