@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Books</title>
+  </head>
+  <body>
+  <%- include('../partials/navbar') %>
+    <h1>My Books</h1>
+     <a href="/books/new">Add a Book</a>
+
+    <% books.forEach(function(book) { %>
+      <div>
+        <% if (book.image) { %>
+        <img src="<%= book.image %>" alt="photo" width="200" />
+  <% } %>
+      <h3><a href="/books/<%= book._id %>"><%= book.title %></a></h3>
+        <p><%= book.author %></p>
+     <p>Status: <%= book.status %></p>
+      </div>
+ <% }); %>
+  </body>
+</html>
+
+
+
