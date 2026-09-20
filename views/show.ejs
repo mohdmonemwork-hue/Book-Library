@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= book.title %></title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    <% if (book.image) { %>
+      <img src="<%= book.image %>" alt="" width="400" />
+    <% } %>
+
+    <h1><%= book.title %></h1>
+    <p>Author: <%= book.author %></p>
+    <p>Genre: <%= book.genre %></p>
+    <p>ISBN: <%= book.isbn %></p>
+    <p>Status: <%= book.status %></p>
+    <p>Owner: <%= book.owner.username %></p>
+
+    <% if (book.owner._id.toString() === user._id.toString()) { %>
+      <a href="/books/<%= book._id %>/edit">Edit</a>
+      <form action="/books/<%= book._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete</button>
+      </form>
+    <% } %>
+  </body>
+</html>
