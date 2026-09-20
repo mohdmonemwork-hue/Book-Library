@@ -29,6 +29,10 @@ const bookSchema = new mongoose.Schema(
       enum: ["available", "borrowed"],
       default: "available",
     },
+    favorite: {
+      type: Boolean,
+      default: false,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
