@@ -12,13 +12,12 @@
       <img src="<%= book.image %>" alt="" width="400" />
     <% } %>
 
-    <h1><%= book.title %></h1>
+    <h1><%= book.title %> <% if (book.favorite) { %>❤️<% } %></h1>
     <p>Author: <%= book.author %></p>
     <p>Genre: <%= book.genre %></p>
     <p>ISBN: <%= book.isbn %></p>
     <p>Status: <%= book.status %></p>
     <p>Owner: <%= book.owner.username %></p>
-
     <% if (book.owner._id.toString() === user._id.toString()) { %>
       <a href="/books/<%= book._id %>/edit">Edit</a>
       <form action="/books/<%= book._id %>?_method=DELETE" method="post">

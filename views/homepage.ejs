@@ -10,20 +10,20 @@
 
     <h1>Welcome to my Website</h1>
 
-    <% if (user) { %>
+  <% if (user) { %>
       <h2>My Favorite Books</h2>
-      <% if (favoriteBooks.length === 0) { %>
-        <p>You haven't marked any books as favorite yet.</p>
-      <% } %>
-      <% favoriteBooks.forEach(function(book) { %>
-        <div>
-          <% if (book.image) { %>
-            <img src="<%= book.image %>" alt="photo" width="150" />
-          <% } %>
-          <h3><a href="/books/<%= book._id %>"><%= book.title %></a></h3>
-          <p><%= book.author %></p>
-        </div>
-      <% }); %>
+     <% if (favoriteBooks.length === 0) { %>
+       <p>You haven't marked any books as favorite yet.</p>
+     <% } %>
+ <% favoriteBooks.forEach(function(book) { %>
+       <div>
+         <% if (book.image) { %>
+      <img src="<%= book.image %>" alt="photo" width="150" />
+     <% } %>
+        <h3><a href="/books/<%= book._id %>"><%= book.title %></a></h3>
+    <p><%= book.author %></p>
+    </div>
+    <% }); %>
     <% } %>
 </body>
 </html>

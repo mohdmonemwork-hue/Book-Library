@@ -15,7 +15,8 @@
         <% if (book.image) { %>
         <img src="<%= book.image %>" alt="photo" width="200" />
   <% } %>
-      <h3><a href="/books/<%= book._id %>"><%= book.title %></a></h3>
+  <h3><a href="/books/<%= book._id %>"><%= book.title %></a> <% if (book.favorite) { %>❤️<% } %></h3>
+   
         <p><%= book.author %></p>
      <p>Status: <%= book.status %></p>
       </div>

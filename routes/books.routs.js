@@ -28,16 +28,38 @@ router.get("/", isSignedIn, async (req, res) => {
 
 router.get("/:bookId", isSignedIn, async (req, res) => {
   const book = await Book.findById(req.params.bookId).populate("owner");
+  if (!book) {
+    return res.redirect("/books");
+  }
   res.render("show.ejs", { book });
 });
 
 router.get("/:bookId/edit", isSignedIn, async (req, res) => {
   const book = await Book.findById(req.params.bookId);
+  if (!book) {
+    return res.redirect("/books");
+  }
+
+  const isOwner = book.owner.equals(req.session.user._id);
+  const isAdmin = req.session.user.role === "super_admin";
+  if (!isOwner && !isAdmin) {
+    return res.redirect("/books");
+  }
+
   res.render("edit.ejs", { book });
 });
 
 router.put("/:bookId", isSignedIn, upload.single("image"), async (req, res) => {
   const book = await Book.findById(req.params.bookId);
+  if (!book) {
+    return res.redirect("/books");
+  }
+
+  const isOwner = book.owner.equals(req.session.user._id);
+  const isAdmin = req.session.user.role === "super_admin";
+  if (!isOwner && !isAdmin) {
+    return res.redirect("/books");
+  }
 
   book.title = req.body.title;
   book.author = req.body.author;
@@ -54,6 +76,16 @@ router.put("/:bookId", isSignedIn, upload.single("image"), async (req, res) => {
 
 router.delete("/:bookId", isSignedIn, async (req, res) => {
   const book = await Book.findById(req.params.bookId);
+  if (!book) {
+    return res.redirect("/books");
+  }
+
+  const isOwner = book.owner.equals(req.session.user._id);
+  const isAdmin = req.session.user.role === "super_admin";
+  if (!isOwner && !isAdmin) {
+    return res.redirect("/books");
+  }
+
   await book.deleteOne();
   res.redirect("/books");
 });
