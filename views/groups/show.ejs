@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= group.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+ <h1><%= group.name %></h1>
+ <p><%= group.description %></p>
+
+    <% if (user.role === "super_admin") { %>
+ <h3>Add a member</h3>
+ <form action="/groups/<%= group._id %>/members" method="post">
+     <label for="username">Username:</label>
+       <input type="text" name="username" id="username" required />
+      <button type="submit">Add</button>
+      </form>
+       <% } %>
+
+  <h2>Members</h2>
+  <% if (group.members.length === 0) { %>
+    <p>No members yet.</p>
+        <% } %>
+
+  <% for (let mem of group.members) { %>
+      <div>
+      <h3><%= mem.name %></h3>
+    <% const memberBooks = books.filter(function(book) {
+         return book.owner.toString() === mem._id.toString();
+          }); %>
+
+      <% if (memberBooks.length === 0) { %>
+          <p>No books yet.</p>
+  <% } %>
+
+<% for (let book of memberBooks) { %>
+    <div>
+            <% if (book.image) { %>
+        <img src="<%= book.image %>" alt="photo" width="120" />
+ <% } %>
+      <p>
+        <a href="/books/<%= book._id %>"><%= book.title %></a>
+         by <%= book.author %>  - <%= book.status %>
+    </p>
+    </div>
+    <% } %>
+   </div>
+    <% } %>
+</body>
+</html>

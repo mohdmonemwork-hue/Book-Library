@@ -18,7 +18,7 @@
     <p>ISBN: <%= book.isbn %></p>
     <p>Status: <%= book.status %></p>
     <p>Owner: <%= book.owner.username %></p>
-    <% if (book.owner._id.toString() === user._id.toString()) { %>
+    <% if (book.owner._id.toString() === user._id.toString() || user.role === "super_admin"){ %>
       <a href="/books/<%= book._id %>/edit">Edit</a>
       <form action="/books/<%= book._id %>?_method=DELETE" method="post">
         <button type="submit">Delete</button>

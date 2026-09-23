@@ -36,12 +36,11 @@ router.get("/:bookId", isSignedIn, async (req, res) => {
 
 router.get("/:bookId/edit", isSignedIn, async (req, res) => {
   const book = await Book.findById(req.params.bookId);
+  const isOwner = book.owner.equals(req.session.user._id);
+  const isAdmin = req.session.user.role === "super_admin";
   if (!book) {
     return res.redirect("/books");
   }
-
-  const isOwner = book.owner.equals(req.session.user._id);
-  const isAdmin = req.session.user.role === "super_admin";
   if (!isOwner && !isAdmin) {
     return res.redirect("/books");
   }
@@ -51,12 +50,12 @@ router.get("/:bookId/edit", isSignedIn, async (req, res) => {
 
 router.put("/:bookId", isSignedIn, upload.single("image"), async (req, res) => {
   const book = await Book.findById(req.params.bookId);
+  const isOwner = book.owner.equals(req.session.user._id);
+  const isAdmin = req.session.user.role === "super_admin";
+
   if (!book) {
     return res.redirect("/books");
   }
-
-  const isOwner = book.owner.equals(req.session.user._id);
-  const isAdmin = req.session.user.role === "super_admin";
   if (!isOwner && !isAdmin) {
     return res.redirect("/books");
   }
@@ -76,12 +75,11 @@ router.put("/:bookId", isSignedIn, upload.single("image"), async (req, res) => {
 
 router.delete("/:bookId", isSignedIn, async (req, res) => {
   const book = await Book.findById(req.params.bookId);
+  const isOwner = book.owner.equals(req.session.user._id);
+  const isAdmin = req.session.user.role === "super_admin";
   if (!book) {
     return res.redirect("/books");
   }
-
-  const isOwner = book.owner.equals(req.session.user._id);
-  const isAdmin = req.session.user.role === "super_admin";
   if (!isOwner && !isAdmin) {
     return res.redirect("/books");
   }
