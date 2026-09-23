@@ -20,6 +20,17 @@ router.get("/groups/new", isSignedIn, isSuperAdmin, (req, res) => {
   res.render("admin/CreateGroup.ejs");
 });
 
+router.delete(
+  "/groups/:groupId",
+  isSignedIn,
+  isSuperAdmin,
+  async (req, res) => {
+    const group = await Group.findById(req.params.groupId);
+    await group.deleteOne();
+    res.redirect("/admin");
+  },
+);
+
 router.post("/groups", isSignedIn, isSuperAdmin, async (req, res) => {
   await Group.create({
     name: req.body.name,
