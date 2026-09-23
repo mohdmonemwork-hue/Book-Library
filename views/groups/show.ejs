@@ -10,14 +10,7 @@
  <h1><%= group.name %></h1>
  <p><%= group.description %></p>
 
-    <% if (user.role === "super_admin") { %>
- <h3>Add a member</h3>
- <form action="/groups/<%= group._id %>/members" method="post">
-     <label for="username">Username:</label>
-       <input type="text" name="username" id="username" required />
-      <button type="submit">Add</button>
-      </form>
-       <% } %>
+
 
   <h2>Members</h2>
   <% if (group.members.length === 0) { %>
