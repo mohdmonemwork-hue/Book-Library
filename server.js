@@ -17,6 +17,7 @@ const authController = require("./routes/auth.routes.js");
 const indexController = require("./routes/index.routes.js");
 const booksController = require("./routes/books.routs.js");
 const groupsController = require("./routes/groups.routes.js");
+const adminController = require("./routes/admin.routes.js");
 
 // Middleware
 app.use(express.static("public")); // my app will serve all static files from public folder
@@ -47,6 +48,7 @@ app.use("/auth", authController);
 app.use("/", indexController);
 app.use("/books", booksController);
 app.use("/groups", groupsController);
+app.use("/admin", adminController);
 
 // connect to database and listen on Port 3000
 async function startServer() {

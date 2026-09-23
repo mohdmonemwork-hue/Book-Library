@@ -1,11 +1,17 @@
 <nav>
     <a href="/">Homepage</a>
 
-    <% if (user) { %>
+    <% if (user.role === "super_admin") { %>
       <a href="/books">My Books</a>
       <a href="/groups">Groups</a>
+      <a href="/admin">Admin Dashboard</a>
       <a href="/auth/sign-out">Logout</a>
-    <% } else { %>
+    <% } else if(user) { %>
+ <a href="/books">My Books</a>
+      <a href="/groups">Groups</a>
+    
+      <a href="/auth/sign-out">Logout</a>
+      <% } else { %>
       <a href="/auth/sign-up">Sign up</a>
       <a href="/auth/sign-in">Login</a>
     <% } %>
