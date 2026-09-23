@@ -17,5 +17,36 @@
     <form action="/admin/groups/new" method="GET">
       <Button>Create new Group </Button>
     </form>
+
+        <h2>Groups</h2>
+    
+
+<% if (groups.length === 0) { %>
+  <p>No groups yet.</p>
+<% } else { %>
+<% groups.forEach((group) => { %>
+      <div class="group-card">
+      <P><h5>group name:</h5><h2><%= group.name %></h2></P>
+      <p><%= group.description %></p>
+      <p>Members: <%= group.members.length %></p>
+
+        
+        <form action="/admin/groups/<%= group._id %>/edit" method="GET">
+      <Button>Edit </Button>
+    </form>
+    <form action="/groups/<%= group._id %>" method="GET">
+      <Button>Go to group</Button>
+    </form>
+
+
+        <form action="/admin/groups/<%= group._id %>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    <% }) %>
+  <% } %>
+  </body>
+</html>
+
   </body>
 </html>
