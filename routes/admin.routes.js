@@ -74,4 +74,20 @@ router.post(
     res.redirect(`/admin/groups/${group._id}/edit`);
   },
 );
+
+router.delete(
+  "/groups/:groupId/members/:userId",
+  isSignedIn,
+  isSuperAdmin,
+  async (req, res) => {
+    const group = await Group.findById(req.params.groupId);
+
+    group.members = group.members.filter((id) => {
+      return id.toString() !== req.params.userId;
+    });
+
+    await group.save();
+    res.redirect(`/admin/groups/${group._id}/edit`);
+  },
+);
 module.exports = router;
