@@ -16,4 +16,8 @@ router.get("/", isSignedIn, isSuperAdmin, async (req, res) => {
   });
 });
 
+router.get("/groups/new", isSignedIn, isSuperAdmin, (req, res) => {
+  res.render("admin/CreateGroup.ejs");
+});
+
 module.exports = router;

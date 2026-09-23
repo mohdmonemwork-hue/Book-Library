@@ -3,9 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Admin Dashboard</title>
   </head>
   <body>
-    <h1>Admin dashboard</h1>
+    <%- include('../partials/navbar') %>
+    <H1>Admin Dash board</H1>
+
+    <div>
+      <h3>website stats</h3>
+      <p>Users: <%= userCount %></p>
+      <p>Groups: <%= groups.length %></p>
+    </div>
+    <form action="/admin/groups/new" method="GET">
+      <Button>Create new Group </Button>
+    </form>
   </body>
 </html>
