@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage <%= group.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    
+
+    <h1><%= group.name %></h1>
+    <p><%= group.description %></p>
+
+    <h2>Members (<%= group.members.length %>)</h2>
+
+    <% if (group.members.length === 0) { %>
+      <p>No members yet.</p>
+    <% } else { %>
+      <% group.members.forEach((member) => { %>
+        <div class="member">
+          <p><%= member.username %> - <%= member.name %></p>
+
+          <form action="/admin/groups/<%= group._id %>/members/<%= member._id %>?_method=DELETE" method="POST">
+            <button type="submit">Remove</button>
+          </form>
+        </div>
+      <% }) %>
+    <% } %>
+
+    <h2>Add Member</h2>
+    <form action="/admin/groups/<%= group._id %>/members" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>
