@@ -19,7 +19,7 @@
       <p>No members yet.</p>
     <% } else { %>
       <% for(let member of group.members) { %>
-        <div class="member">
+        <div >
           <p><%= member.username %> - <%= member.name %></p>
 
           <form action="/admin/groups/<%= group._id %>/members/<%= member._id %>?_method=DELETE" method="POST">

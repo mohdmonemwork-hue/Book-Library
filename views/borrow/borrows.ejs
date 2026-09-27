@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Borrow Requests</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    <h2>Requests for my books</h2>
+    <% for (let r of Receive) { %>
+      <div>
+        
+        <p>
+          <%= r.book.title %> - requested by
+          <a href="/users/<%= r.requester._id %>"><%= r.requester.name %></a>
+          - <%= r.status %>
+        </p>
+
+        <% if (r.status === "requested") { %>
+          <form action="/borrow/<%= r._id %>/approve?_method=PUT" method="POST">
+            <button>Approve</button>
+          </form>
+          <form action="/borrow/<%= r._id %>/reject?_method=PUT" method="POST">
+            <button>Reject</button>
+          </form>
+        <% } %>
+
+        <% if (r.status === "approved") { %>
+          <form action="/borrow/<%= r._id %>/return?_method=PUT" method="POST">
+            <button>Mark as returned</button>
+          </form>
+        <% } %>
+      </div>
+    <% } %>
+
+    <h2>My requests</h2>
+    <% for (let r of request) { %>
+      
+      <p>
+        <%= r.book.title %> - owner:
+        <a href="/users/<%= r.owner._id %>"><%= r.owner.name %></a>
+        - <%= r.status %>
+      </p>
+    <% } %>
+  </body>
+</html>

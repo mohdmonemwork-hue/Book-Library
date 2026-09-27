@@ -1,14 +1,18 @@
 <nav>
     <a href="/">Homepage</a>
 
-    <% if (user.role === "super_admin") { %>
+    <% if (user && user.role === "super_admin") { %>
       <a href="/books">My Books</a>
       <a href="/groups">Groups</a>
+            <a href="/borrow">Borrow Requests</a>
+
       <a href="/admin">Admin Dashboard</a>
       <a href="/auth/sign-out">Logout</a>
+      
     <% } else if(user) { %>
  <a href="/books">My Books</a>
       <a href="/groups">Groups</a>
+      <a href="/borrow">Borrow Requests</a>
     
       <a href="/auth/sign-out">Logout</a>
       <% } else { %>

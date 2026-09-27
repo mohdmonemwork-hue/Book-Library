@@ -24,7 +24,7 @@
 <% if (groups.length === 0) { %>
   <p>No groups yet.</p>
 <% } else { %>
-<% groups.forEach((group) => { %>
+<% for(let group of groups){ %>
       <div class="group-card">
       <P><h5>group name:</h5><h2><%= group.name %></h2></P>
       <p><%= group.description %></p>
@@ -43,10 +43,28 @@
           <button type="submit">Delete</button>
         </form>
       </div>
-    <% }) %>
+    <% } %>
   <% } %>
-  </body>
-</html>
+<div>
+<h2>Delete Users</h2>
+<!-- NOT FINISHED -->
+
+<% for(let ur of users){%>
+  <P><%= ur.name%></P>
+
+<form action="/admin/users/<%= ur._id  %>?_method=DELETE" method="POST">
+          <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+        </form>
+  <%}%>
+
+
+
+
+
+
+</div>
+
 
   </body>
 </html>
+

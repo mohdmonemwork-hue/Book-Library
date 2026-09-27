@@ -18,6 +18,8 @@ const indexController = require("./routes/index.routes.js");
 const booksController = require("./routes/books.routs.js");
 const groupsController = require("./routes/groups.routes.js");
 const adminController = require("./routes/admin.routes.js");
+const borrowController = require("./routes/borrow.routes.js");
+const usersController = require("./routes/users.route.js");
 
 // Middleware
 app.use(express.static("public")); // my app will serve all static files from public folder
@@ -49,6 +51,8 @@ app.use("/", indexController);
 app.use("/books", booksController);
 app.use("/groups", groupsController);
 app.use("/admin", adminController);
+app.use("/borrow", borrowController);
+app.use("/users", usersController);
 
 // connect to database and listen on Port 3000
 async function startServer() {

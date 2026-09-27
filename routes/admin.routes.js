@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Group = require("../models/Group.js");
 const User = require("../models/User.js");
+const Book = require("../models/Book.js");
 const isSignedIn = require("../middleware/is-signed-in.js");
 const isSuperAdmin = require("../middleware/is-super-admin.js");
 
@@ -10,9 +11,11 @@ const isSuperAdmin = require("../middleware/is-super-admin.js");
 router.get("/", isSignedIn, isSuperAdmin, async (req, res) => {
   const groups = await Group.find();
   const users = await User.find();
+
   res.render("admin/adminDashboard.ejs", {
     groups,
     userCount: users.length,
+    users,
   });
 });
 
@@ -90,4 +93,29 @@ router.delete(
     res.redirect(`/admin/groups/${group._id}/edit`);
   },
 );
+
+router.delete("/users/:userId", isSignedIn, isSuperAdmin, async (req, res) => {
+  const user = await User.findById(req.params.userId);
+
+  if (user.role === "super_admin") {
+    return res.redirect("/admin");
+  }
+
+  const groups = await Group.find();
+  for (let group of groups) {
+    group.members = group.members.filter((id) => {
+      return id.toString() !== user._id.toString();
+    });
+    await group.save();
+  }
+
+  const books = await Book.find({ owner: user._id });
+  for (let book of books) {
+    await book.deleteOne();
+  }
+
+  await user.deleteOne();
+
+  res.redirect("/admin");
+});
 module.exports = router;

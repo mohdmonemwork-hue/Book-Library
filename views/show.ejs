@@ -18,10 +18,23 @@
     <p>ISBN: <%= book.isbn %></p>
     <p>Status: <%= book.status %></p>
     <p>Owner: <%= book.owner.username %></p>
-    <% if (book.owner._id.toString() === user._id.toString() || user.role === "super_admin"){ %>
+
+    <!-- true if the logged-in user owns this book -->
+    <% const isOwner = book.owner._id.toString() === user._id.toString(); %>
+
+    <!-- owner or admin can edit and delete -->
+    <% if (isOwner || user.role === "super_admin") { %>
       <a href="/books/<%= book._id %>/edit">Edit</a>
       <form action="/books/<%= book._id %>?_method=DELETE" method="post">
         <button type="submit">Delete</button>
+      </form>
+    <% } %>
+
+    <!-- other users can borrow if the book is available -->
+    <% if (!isOwner && book.status === "available") { %>
+      <form action="/borrow" method="POST">
+        <input type="hidden" name="bookId" value="<%= book._id %>" />
+        <button>Request to borrow</button>
       </form>
     <% } %>
   </body>
