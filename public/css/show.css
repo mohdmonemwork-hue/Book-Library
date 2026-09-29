@@ -1,0 +1,13 @@
+.book-details {
+  display: flex;
+  gap: 30px;
+}
+
+.book-img img {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.book-info p {
+  margin-bottom: 5px;
+}

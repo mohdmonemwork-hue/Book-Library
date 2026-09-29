@@ -1,5 +1,5 @@
 <nav>
-    <a href="/">Homepage</a>
+    <!-- <a href="/">Homepage</a>
 
     <% if (user && user.role === "super_admin") { %>
       <a href="/books">My Books</a>
@@ -18,5 +18,56 @@
       <% } else { %>
       <a href="/auth/sign-up">Sign up</a>
       <a href="/auth/sign-in">Login</a>
-    <% } %>
+    <% } %> -->
+
+
+
+<ul class="nav nav-tabs">
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/">Homepage</a>
+  </li>
+   <% if (user && user.role === "super_admin") { %>
+  <li class="nav-item">
+    <a class="nav-link"  href="/books">My Books</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/groups">Groups</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/borrow">Borrow Requests</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link  " href="/admin">Admin Dashboard</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="/auth/sign-out">Logout</a>
+  </li>
+<% } else if(user) { %>
+<li class="nav-item">
+    <a class="nav-link " href="/books">My Books</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/groups">Groups</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/borrow">Borrow Requests</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/auth/sign-out">Logout</a>
+  </li>
+
+  <% } else { %>
+    <li class="nav-item">
+    <a class="nav-link" href="/auth/sign-up">Sign up</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/auth/sign-in">Login</a>
+  </li>
+
+    <%}%>
+
+</ul> 
+
+
 </nav>

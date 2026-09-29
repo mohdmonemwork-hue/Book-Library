@@ -1,0 +1,15 @@
+h1 {
+  text-align: center;
+  border-bottom: 3px solid #c49a3a;
+  padding-bottom: 10px;
+}
+
+h2 {
+  text-align: center;
+  color: #555;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  transition: 0.2s;
+}

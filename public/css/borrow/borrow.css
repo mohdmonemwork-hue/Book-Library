@@ -1,0 +1,12 @@
+.box {
+  border-left: 5px solid #c45f3a;
+}
+
+.box form {
+  display: inline-block;
+}
+
+h2 {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+}

@@ -1,0 +1,10 @@
+.form-box {
+  margin: 0 auto;
+  border-top: 5px solid #c49a3a;
+}
+
+.form-box img {
+  display: block;
+  margin-top: 10px;
+  border-radius: 6px;
+}

@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "bootstrap": "^5.3.8",
     "connect-mongo": "^6.0.0",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
@@ -22,5 +23,8 @@
     "mongoose": "^9.1.2",
     "morgan": "^1.10.1",
     "multer": "^2.4.0"
+  },
+  "devDependencies": {
+    "prettier-plugin-ejs": "^1.0.3"
   }
 }

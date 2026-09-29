@@ -1,0 +1,39 @@
+.stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stats p {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-left: 5px solid #b3412e;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.group-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.group-card form {
+  display: inline-block;
+}
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 15px;
+  margin-bottom: 8px;
+}
+
+.user-row p,
+.user-row button {
+  margin: 0;
+}

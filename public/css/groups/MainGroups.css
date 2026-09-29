@@ -1,0 +1,10 @@
+.group-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.group-list .box {
+  width: 280px;
+  border-top: 5px solid #4a6a7a;
+}
