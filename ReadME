@@ -32,8 +32,6 @@
 5. As a user, I want to be able to borrow my group member books
 6. As a user, I want to be able to edit my books
 
----
-
 ## Database Design
 
 ![Project ERD](Project2ERD.png)
