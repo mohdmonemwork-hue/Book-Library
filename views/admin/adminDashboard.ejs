@@ -49,7 +49,7 @@
 
        <% if (ur.role !== "super_admin") { %>
     <form action="/admin/users/<%= ur._id %>?_method=DELETE" method="POST">
-      <button type="submit" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</button>
+      <button type="submit" class="delete-btn" onclick="return confirm('Are you sure about that?')">Delete</button>
    </form>
      <% } %>
       </div>

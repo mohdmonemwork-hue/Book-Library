@@ -94,11 +94,11 @@
 
 ## Features
 
-1. **Full CRUD for books** — create, view, edit, and delete books, including cover image uploads.
-2. **User authentication** — sign up, sign in, and sign out with bcrypt-hashed passwords and session-based login.
+1. **Full CRUD for books,gorups** — create, view, edit, and delete books, including cover image uploads.
+2. **Imgae upload** — enable the user to upload image of the book
 3. **Role-based access** — regular users and a super admin with extra permissions.
 4. **Groups** — users only see books from members of the groups they belong to.
-5. **Borrowing system** — request to borrow a book from someone in a shared group; owners can approve, reject, or mark it as returned, and the book's status updates automatically.
+5. **Borrowing system** — request to borrow a book from someone in a shared group owners can approve, reject, or mark it as returned, and the book's status updates automatically.
 6. **Favorites** — mark books as favorites and see them on the homepage.
 7. **User profiles** — view a user's profile and how many books they own.
 8. **Admin dashboard** — create/delete groups, add/remove members, and delete users.
