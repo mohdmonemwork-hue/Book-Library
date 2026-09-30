@@ -14,10 +14,10 @@ router.get("/", isSignedIn, async (req, res) => {
     .populate("book")
     .populate("owner");
 
-  Receive = Receive.filter((r) => r.book && r.requester);
-  request = request.filter((r) => r.book && r.owner);
-
-  res.render("borrow/borrows.ejs", { Receive, request });
+  res.render("borrow/borrows.ejs", {
+    Receive: Receive.filter((r) => r.book && r.requester),
+    request: request.filter((r) => r.book && r.owner),
+  });
 });
 
 router.post("/", isSignedIn, async (req, res) => {
